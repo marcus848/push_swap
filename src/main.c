@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 
-	ft_printf("Retorno: %d\n", parse_args(av));
+	ft_printf("Retorno: %d\n", parse_args(ac, &av[1]));
 	// if (!parse_args(av))
 	// {
 	// 	ft_printf("error\n");

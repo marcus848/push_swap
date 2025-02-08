@@ -25,8 +25,11 @@ typedef struct s_stack
 }	t_stack;
 
 // parse_args
-int	parse_args(char **av);
+int	parse_args(int ac, char **av);
 int	check_is_nbr(char **av);
+int	count_nbrs(int ac, char **av);
+int	check_nbr_duplicate(int *nbrs);
+int	*get_nbrs(char **av, int size_nbrs);
 
 // utils
 int	skip_spaces(char *str, int i);
