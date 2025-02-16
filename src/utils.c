@@ -18,3 +18,30 @@ int	skip_spaces(char *str, int i)
 		i++;
 	return (i);
 }
+
+int	count_nbrs(int ac, char **av)
+{
+	int		i;
+	int		j;
+	int		count;
+	int		minus;
+	char	**split;
+
+	count = 0;
+	minus = 0;
+	i = 0;
+	while (av[i])
+	{
+		if (ft_strchr(av[i], ' '))
+		{
+			j = 0;
+			split = ft_split(av[i], ' ');
+			while (split[j])
+				j++;
+			minus++;
+			count += j;
+		}
+		i++;
+	}
+	return (ac + count - minus - 1);
+}
