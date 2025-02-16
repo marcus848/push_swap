@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 20:40:39 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/06 22:17:28 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:16:57 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	check_nbr_duplicate(int *nbrs)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (nbrs[i])
 	{
 		j = i + 1;

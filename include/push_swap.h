@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:26:25 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/15 21:20:05 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:15:41 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_limits
 	long	min;
 	int		index_min;
 	int		index_max;
+	int		size;
 }	t_limits;
 
 typedef struct s_stats
@@ -61,5 +62,17 @@ int	count_nbrs(int ac, char **av);
 // init_structs
 t_turk	*make_turk(int ac, char **av);
 t_stats	init_stats(void);
+
+// circular_list
+void	add_node(t_stack **stack, long nbr);
+
+// stack
+void	create_stack_a(t_turk *turk, char **av);
+void	create_stack_a_split(t_turk *turk, char *av, int i);
+
+// moves
+void	sa(t_turk *turk, int message);
+void	sb(t_turk *turk, int message);
+void	ss(t_turk *turk, int message);
 
 #endif

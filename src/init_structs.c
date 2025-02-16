@@ -6,12 +6,11 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 21:07:36 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/15 21:51:43 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:38:32 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdlib.h>
 
 t_turk	*make_turk(int ac, char **av)
 {
@@ -35,9 +34,11 @@ t_stats	init_stats(void)
 	stats.a.min = 0;
 	stats.a.index_max = 0;
 	stats.a.index_min = 0;
+	stats.a.size = 0;
 	stats.b.max = 0;
 	stats.b.min = 0;
 	stats.b.index_max = 0;
 	stats.b.index_min = 0;
+	stats.b.size = 0;
 	return (stats);
 }
