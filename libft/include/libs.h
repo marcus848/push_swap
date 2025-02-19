@@ -18,5 +18,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdarg.h>
 
 #endif

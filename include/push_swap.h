@@ -75,4 +75,8 @@ void	sa(t_turk *turk, int message);
 void	sb(t_turk *turk, int message);
 void	ss(t_turk *turk, int message);
 
+// sort_turk
+void	sort_turk(t_turk *turk);
+void	sort_two_numbers(t_turk *turk);
+
 #endif

@@ -29,16 +29,16 @@ int	main(int ac, char **av)
 	if (!turk)
 		return(0);
 	create_stack_a(turk, &av[1]);
-	
-	ft_printf("size: %d\n", turk->size);
-	ft_printf("max a: %d\n", turk->stats.a.index_max);
-	int i = 1;
-	t_stack *check = turk->stack_a;
-	while (i < ac)
-	{
-		ft_printf("nbr%d: %d\n", i, check->nbr);
-		i++;
-		check = check->next;
-	}
-	ft_printf("max: %d\nmin: %d\n", turk->max, turk->min);
+	sort_turk(turk);	
+	// ft_printf("size: %d\n", turk->size);
+	// ft_printf("max a: %d\n", turk->stats.a.index_max);
+	// int i = 1;
+	// t_stack *check = turk->stack_a;
+	// while (i < ac)
+	// {
+	// 	ft_printf("nbr%d: %d\n", i, check->nbr);
+	// 	i++;
+	// 	check = check->next;
+	// }
+	// ft_printf("max: %d\nmin: %d\n", turk->max, turk->min);
 }
