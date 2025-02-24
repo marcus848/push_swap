@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   circular_list.c                                    :+:      :+:    :+:   */
+/*   stats.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/16 15:36:08 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/24 11:50:55 by marcudos         ###   ########.fr       */
+/*   Created: 2025/02/24 14:42:33 by marcudos          #+#    #+#             */
+/*   Updated: 2025/02/24 15:26:38 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	add_node(t_stack **stack, long nbr)
+void	get_stats(t_limits *limits, t_stack *stack)
 {
 	t_stack	*temp;
-	t_stack	*new_node;
+	int		i;
 
-	new_node = malloc(sizeof(t_stack));
-	if (!new_node)
-		return ;
-	new_node->nbr = nbr;
-	if (*stack == NULL)
+	i = 1;
+	limits->max = stack->nbr;
+	limits->min = stack->nbr;
+	limits->index_max = 0;
+	limits->index_min = 0;
+	temp = stack->next;
+	while (temp != stack)
 	{
-		new_node->next = new_node;
-		new_node->prev = new_node;
-		*stack = new_node;
+		if (temp->nbr > limits->max)
+		{
+			limits->index_max = i;
+			limits->max = temp->nbr;
+		}
+		else if (temp->nbr < limits->min)
+		{
+			limits->index_min = i;
+			limits->min = temp->nbr;
+		}
+		temp = temp->next;
+		i++;
 	}
-	else
-	{
-		temp = (*stack)->prev;
-		new_node->next = *stack;
-		new_node->prev = temp;
-		temp->next = new_node;
-		(*stack)->prev = new_node;
-	}
+	limits->size = i;
 }

@@ -46,6 +46,41 @@ fclean: clean
 	@rm -f $(NAME) $(LIBFT)
 	@echo "fcleaned"
 
+test2:	$(NAME)	
+	$(eval ARG = $(shell shuf -i 0-100 -n 2))
+
+	./push_swap $(ARG) | ./checker_linux $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
+test3:	$(NAME)	
+	$(eval ARG = $(shell shuf -i 0-100 -n 3))
+
+	./push_swap $(ARG) | ./checker_linux $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
+test4:	$(NAME)	
+	$(eval ARG = $(shell shuf -i 0-100 -n 4))
+
+	./push_swap $(ARG) | ./checker_linux $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
+test10:	$(NAME)	
+	$(eval ARG = $(shell shuf -i 0-100 -n 10))
+
+	./push_swap $(ARG) | ./checker_linux $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
+test50:	$(NAME)	
+	$(eval ARG = $(shell shuf -i 0-100 -n 50))
+
+	./push_swap $(ARG) | ./checker_linux $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
 re: fclean all
 
 .PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 15:32:17 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/16 18:00:09 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:38:22 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	create_stack_a(t_turk *turk, char **av)
 {
-	long		nbr;
+	long	nbr;
 	int		i;
 
 	i = 0;
@@ -38,8 +38,8 @@ void	create_stack_a(t_turk *turk, char **av)
 void	create_stack_a_split(t_turk *turk, char *av, int i)
 {
 	char	**split;
+	long	nbr;
 	int		j;
-	long		nbr;
 
 	j = -1;
 	split = ft_split(av, ' ');
@@ -55,5 +55,4 @@ void	create_stack_a_split(t_turk *turk, char *av, int i)
 		free(split[j]);
 	}
 	free(split);
-
 }

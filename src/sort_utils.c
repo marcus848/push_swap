@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   circular_list.c                                    :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/16 15:36:08 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/24 11:50:55 by marcudos         ###   ########.fr       */
+/*   Created: 2025/02/24 14:07:19 by marcudos          #+#    #+#             */
+/*   Updated: 2025/02/24 15:59:10 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	add_node(t_stack **stack, long nbr)
+int	is_sort(t_turk *turk)
 {
-	t_stack	*temp;
-	t_stack	*new_node;
+	t_stack	*a;
+	int		i;
 
-	new_node = malloc(sizeof(t_stack));
-	if (!new_node)
-		return ;
-	new_node->nbr = nbr;
-	if (*stack == NULL)
+	i = 0;
+	a = turk->stack_a->next;
+	while (i < turk->size)
 	{
-		new_node->next = new_node;
-		new_node->prev = new_node;
-		*stack = new_node;
+		if (a->nbr > a->next->nbr && a->next != turk->stack_a)
+			return (0);
+		a = a->next;
+		i++;
 	}
-	else
-	{
-		temp = (*stack)->prev;
-		new_node->next = *stack;
-		new_node->prev = temp;
-		temp->next = new_node;
-		(*stack)->prev = new_node;
-	}
+	return (1);
 }
+

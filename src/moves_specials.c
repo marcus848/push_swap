@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_turk.c                                        :+:      :+:    :+:   */
+/*   moves_specials.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/16 17:39:09 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/16 17:47:59 by marcudos         ###   ########.fr       */
+/*   Created: 2025/02/24 11:52:13 by marcudos          #+#    #+#             */
+/*   Updated: 2025/02/24 11:54:53 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	sort_turk(t_turk *turk)
+void	ss(t_turk *turk)
 {
-	if (turk->size == 2)
-		sort_two_numbers(turk);
+	sa(turk, 0);
+	sb(turk, 0);
+	ft_printf("ss\n");
 }
 
-void	sort_two_numbers(t_turk *turk)
+void	rr(t_turk *turk)
 {
-	t_stack	*a;
+	ra(turk, 0);
+	sb(turk, 0);
+	ft_printf("rr\n");
+}
 
-	a = turk->stack_a;
-	if (a->nbr > a->next->nbr)
-		sa(turk, 1);
+void	rrr(t_turk *turk)
+{
+	rra(turk, 0);
+	rrb(turk, 0);
+	ft_printf("rrr\n");
 }
