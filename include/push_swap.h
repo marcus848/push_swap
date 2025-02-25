@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:26:25 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 15:48:44 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:15:25 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,9 @@ typedef struct s_turk
 	long	min;
 	int		size;
 	t_stats	stats;
-	t_stack	**stack_a;
-	t_stack	**stack_b;
+	t_moves	moves;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 }	t_turk;
 
 // parse_args
@@ -104,30 +105,30 @@ void	create_stack_a(t_turk **turk, char **av);
 void	create_stack_a_split(t_turk **turk, char *av, int i);
 
 // moves_simple
-void	sa(t_turk *turk, int message);
-void	sb(t_turk *turk, int message);
-void	pa(t_turk *turk);
-void	pb(t_turk *turk);
+void	sa(t_stack **a, int message);
+void	sb(t_stack **b, int message);
+void	pa(t_turk **turk);
+void	pb(t_turk **turk);
 
 // moves_rotate
-void	ra(t_turk *turk, int message);
-void	rb(t_turk *turk, int message);
-void	rra(t_turk *turk, int message);
-void	rrb(t_turk *turk, int message);
+void	ra(t_turk **turk, int message);
+void	rb(t_turk **turk, int message);
+void	rra(t_turk **turk, int message);
+void	rrb(t_turk **turk, int message);
 
 // moves_specials
-void	ss(t_turk *turk);
-void	rr(t_turk *turk);
-void	rrr(t_turk *turk);
+void	ss(t_turk **turk);
+void	rr(t_turk **turk);
+void	rrr(t_turk **turk);
 
 // sort_turk
-void	sort(t_turk **turk);
-void	sort_two_numbers(t_turk *turk);
+void	sort_turk(t_turk *turk);
+void	sort_two_numbers(t_stack **a);
 void	sort_three_numbers(t_turk *turk);
 void	sort_four_numbers(t_turk *turk);
 
 // sort_utils
-int	is_sort(t_turk **turk);
+int	is_sort(t_turk *turk);
 
 // turkish
 void	turkish(t_turk *turk);
@@ -135,7 +136,7 @@ void	turkish(t_turk *turk);
 // stats
 void	get_stats(t_limits *limits, t_stack *stack);
 
-// end
+//end
 void	free_all(t_turk **turk);
 
 #endif

@@ -12,21 +12,21 @@
 
 #include "../include/push_swap.h"
 
-void	ss(t_turk *turk)
+void	ss(t_turk **turk)
 {
 	sa(turk, 0);
 	sb(turk, 0);
 	ft_printf("ss\n");
 }
 
-void	rr(t_turk *turk)
+void	rr(t_turk **turk)
 {
 	ra(turk, 0);
 	sb(turk, 0);
 	ft_printf("rr\n");
 }
 
-void	rrr(t_turk *turk)
+void	rrr(t_turk **turk)
 {
 	rra(turk, 0);
 	rrb(turk, 0);

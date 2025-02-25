@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 15:32:17 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 15:51:58 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:38:22 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	create_stack_a(t_turk **turk, char **av)
 		else
 		{
 			nbr = ft_atoi(av[i]);
-			add_node((*turk)->stack_a, nbr);
+			add_node(&(*turk)->stack_a, nbr);
 			if ((*turk)->min > nbr || i == 0)
 				(*turk)->min = nbr;
 			if ((*turk)->max < nbr || i == 0)
@@ -46,7 +46,7 @@ void	create_stack_a_split(t_turk **turk, char *av, int i)
 	while (split[++j])
 	{
 		nbr = ft_atoi(split[j]);
-		add_node((*turk)->stack_a, nbr);
+		add_node(&(*turk)->stack_a, nbr);
 		if ((*turk)->min > nbr || i == 0)
 			(*turk)->min = nbr;
 		if ((*turk)->max < nbr || i == 0)

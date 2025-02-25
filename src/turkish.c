@@ -17,3 +17,4 @@ void	turkish(t_turk *turk)
 	(void) turk;
 	return ;
 }
+//

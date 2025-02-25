@@ -6,11 +6,12 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 20:40:39 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 15:45:41 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:16:45 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include <stdlib.h>
 
 int	parse_args(int ac, char **av)
 {
@@ -97,6 +98,7 @@ int	check_nbr_duplicate(int *nbrs, int size_nbrs)
 		}
 		i++;
 	}
+	free(nbrs);
 	return (1);
 }
 //

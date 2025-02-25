@@ -70,14 +70,14 @@ test4:	$(NAME)
 test10:	$(NAME)	
 	$(eval ARG = $(shell shuf -i 0-100 -n 10))
 
-	./push_swap $(ARG)
+	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 
 test50:	$(NAME)	
 	$(eval ARG = $(shell shuf -i 0-100 -n 50))
 
-	./push_swap $(ARG)
+	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 

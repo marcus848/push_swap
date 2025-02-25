@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 14:54:58 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 15:41:34 by marcudos         ###   ########.fr       */
+/*   Created: 2025/02/25 18:11:49 by marcudos          #+#    #+#             */
+/*   Updated: 2025/02/25 18:17:28 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ void	free_all(t_turk **turk)
 		free(temp->prev);
 	}
 	free((*turk)->stack_a);
-	// free((*turk)->stack_b);
 	free((*turk));
-	free(turk);
 }
