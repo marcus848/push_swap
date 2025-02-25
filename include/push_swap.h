@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:26:25 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 18:15:25 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:45:08 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	rrr(t_turk **turk);
 
 // sort_turk
 void	sort_turk(t_turk *turk);
-void	sort_two_numbers(t_stack **a);
+void	sort_two_numbers(t_turk **turk);
 void	sort_three_numbers(t_turk *turk);
 void	sort_four_numbers(t_turk *turk);
 

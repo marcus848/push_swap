@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:11:49 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 18:17:28 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:41:53 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,56 @@
 
 void	free_all(t_turk **turk)
 {
-	t_turk	*t;
-	t_stack	*a;
-	t_stack	*b;
-	t_stack	*temp;
+	// t_turk	*t;
+	// t_stack	*a;
+	// t_stack	*temp;
+	// t_stack	*next;
+	// int		i;
+	//
+	// i = 0;
+	// t = (*turk);
+	// a = t->stack_a;
+	// temp = a->next;
+	// while (temp != a)
+	// {
+	// 	next = temp->next;
+	// 	free(temp);
+	// 	temp = next;
+	// }
+	// free((*turk)->stack_b);
+	// free(a);
+	// free((*turk));
+	t_turk	*t = (*turk);
+	t_stack	*a = t->stack_a;
 
-	t = (*turk);
-	a = t->stack_a;
-	b = t->stack_b;
-	temp = a->next;
-	while (temp != a)
+	if (!a)
 	{
-		temp = temp->next;
-		free(temp->prev);
+		free(t);
+		return;
 	}
-	free((*turk)->stack_a);
-	free((*turk));
+
+	t_stack	*temp = a->next;
+
+	// Caso especial: lista com exatamente dois elementos
+	if (a->next != a && a->next->next == a)
+	{
+		free(a->next);  // Libera o segundo nó
+		free(a);        // Libera o primeiro nó
+	}
+	else if (a->next == a)  // Caso de apenas um nó
+	{
+		free(a);
+	}
+	else  // Caso geral para mais de dois nós
+	{
+		while (temp != a)
+		{
+			t_stack *next = temp->next;
+			free(temp);
+			temp = next;
+		}
+		free(a);
+	}
+
+	free(t);
 }

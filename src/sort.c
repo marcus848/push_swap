@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 17:39:09 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 18:14:13 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:45:23 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	sort_turk(t_turk *turk)
 {
 	get_stats(&turk->stats.a, turk->stack_a);
 	if (is_sort(turk))
-		exit (1);
+		;
 	else if (turk->size == 2)
-		sort_two_numbers(&turk->stack_a);
+		sort_two_numbers(&turk);
 	else if (turk->size == 3)
 		sort_three_numbers(turk);
 	else if (turk->size == 4)
@@ -28,10 +28,10 @@ void	sort_turk(t_turk *turk)
 	free_all(&turk);
 }
 
-void	sort_two_numbers(t_stack **a)
+void	sort_two_numbers(t_turk **turk)
 {
-	if ((*a)->nbr > (*a)->next->nbr)
-		sa(a, 1);
+	if ((*turk)->stack_a->nbr > (*turk)->stack_a->next->nbr)
+		ra(turk, 1);
 }
 
 void	sort_three_numbers(t_turk *turk)
