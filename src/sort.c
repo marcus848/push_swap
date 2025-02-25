@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 17:39:09 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 18:45:23 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:47:09 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,11 @@ void	sort_three_numbers(t_turk *turk)
 
 void	sort_four_numbers(t_turk *turk)
 {
-	long	b;
-
 	pb(&turk);
 	get_stats(&turk->stats.b, turk->stack_b);
 	get_stats(&turk->stats.a, turk->stack_a);
 	sort_three_numbers(turk);
 	get_stats(&turk->stats.a, turk->stack_a);
-	b = turk->stack_b->nbr;
 	if (turk->stats.b.min < turk->stats.a.min)
 		pa(&turk);
 	else if (turk->stats.b.max > turk->stats.a.max)
@@ -80,14 +77,14 @@ void	sort_four_numbers(t_turk *turk)
 		pa(&turk);
 		ra(&turk, 1);
 	}
-	else if (b > turk->stack_a->next->nbr)
+	else if (turk->stack_b->nbr > turk->stack_a->next->nbr)
 	{
 		rra(&turk, 1);
 		pa(&turk);
 		ra(&turk, 1);
 		ra(&turk, 1);
 	}
-	else if (b < turk->stack_a->next->nbr)
+	else if (turk->stack_b->nbr < turk->stack_a->next->nbr)
 	{
 		pa(&turk);
 		sa(&turk->stack_a, 1);
