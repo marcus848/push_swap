@@ -10,6 +10,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
 
+SIZE = 3
 # Source and object files
 SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -80,6 +81,10 @@ test50:	$(NAME)
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
+
+valgrind: $(NAME)
+	$(eval ARG = $(shell shuf -i 0-100 -n $(SIZE)))
+	@valgrind --leak-check=full --show-leak-kinds=all ./push_swap $(ARG)
 
 re: fclean all
 

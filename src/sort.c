@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 17:39:09 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 18:47:09 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 19:19:54 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sort_turk(t_turk *turk)
 	else if (turk->size == 4)
 		sort_four_numbers(turk);
 	else
-		turkish(turk);
+		turkish(&turk);
 	free_all(&turk);
 }
 
