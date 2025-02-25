@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:26:25 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/24 15:54:48 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:48:44 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,14 @@ typedef struct s_turk
 	long	min;
 	int		size;
 	t_stats	stats;
-	t_moves	moves;
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	**stack_a;
+	t_stack	**stack_b;
 }	t_turk;
 
 // parse_args
 int	parse_args(int ac, char **av);
 int	check_is_nbr(char **av);
-int	check_nbr_duplicate(int *nbrs);
+int	check_nbr_duplicate(int *nbrs, int size_nbrs);
 int	*get_nbrs(char **av, int size_nbrs);
 
 // utils
@@ -101,8 +100,8 @@ void	reset_moves(t_moves *moves);
 void	add_node(t_stack **stack, long nbr);
 
 // stack
-void	create_stack_a(t_turk *turk, char **av);
-void	create_stack_a_split(t_turk *turk, char *av, int i);
+void	create_stack_a(t_turk **turk, char **av);
+void	create_stack_a_split(t_turk **turk, char *av, int i);
 
 // moves_simple
 void	sa(t_turk *turk, int message);
@@ -122,17 +121,21 @@ void	rr(t_turk *turk);
 void	rrr(t_turk *turk);
 
 // sort_turk
-void	sort_turk(t_turk *turk);
+void	sort(t_turk **turk);
 void	sort_two_numbers(t_turk *turk);
 void	sort_three_numbers(t_turk *turk);
+void	sort_four_numbers(t_turk *turk);
 
 // sort_utils
-int	is_sort(t_turk *turk);
+int	is_sort(t_turk **turk);
 
 // turkish
 void	turkish(t_turk *turk);
 
 // stats
 void	get_stats(t_limits *limits, t_stack *stack);
+
+// end
+void	free_all(t_turk **turk);
 
 #endif

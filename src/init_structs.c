@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 21:07:36 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/24 15:44:37 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:00:26 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ t_turk	*make_turk(int ac, char **av)
 	turk = malloc(sizeof(t_turk));
 	turk->size = count_nbrs(ac, av);
 	turk->stats = init_stats();
-	turk->moves = init_moves();
+	// turk->moves = init_moves();
 	turk->min = 0;
 	turk->max = 0;
-	turk->stack_a = NULL;
-	turk->stack_b = NULL;
+	turk->stack_a = malloc(sizeof(t_stack *));
+	turk->stack_b = malloc(sizeof(t_stack *));
 	return (turk);
 }
 

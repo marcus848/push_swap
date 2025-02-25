@@ -6,18 +6,18 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 20:40:39 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/16 17:16:57 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:45:41 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdlib.h>
 
 int	parse_args(int ac, char **av)
 {
 	if (!check_is_nbr(av))
 		return (0);
-	if (!check_nbr_duplicate(get_nbrs(av, count_nbrs(ac, av))))
+	if (!check_nbr_duplicate(get_nbrs(av, count_nbrs(ac, av)),
+			count_nbrs(ac, av)))
 		return (0);
 	return (1);
 }
@@ -80,16 +80,16 @@ int	*get_nbrs(char **av, int size_nbrs)
 	return (nbrs);
 }
 
-int	check_nbr_duplicate(int *nbrs)
+int	check_nbr_duplicate(int *nbrs, int size_nbrs)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (nbrs[i])
+	while (i < size_nbrs)
 	{
 		j = i + 1;
-		while (nbrs[j])
+		while (j < size_nbrs)
 		{
 			if (nbrs[i] == nbrs[j])
 				return (0);

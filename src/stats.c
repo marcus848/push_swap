@@ -40,3 +40,12 @@ void	get_stats(t_limits *limits, t_stack *stack)
 	}
 	limits->size = i;
 }
+//
+// void	actualize_stats(t_turk **turk, int move)
+// {
+// 	if (move == e_ra)
+// 	{
+// 		(*turk)->stats.a.index_max
+// 	}
+//
+// }
