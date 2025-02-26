@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:26:25 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 19:54:44 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:38:52 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include "../libft/include/libft.h"
 
 // enum
-enum e_moves {
+enum e_moves
+{
 	e_sa,
 	e_sb,
 	e_ss,
@@ -70,6 +71,16 @@ typedef struct s_moves
 	int	total;
 }	t_moves;
 
+typedef struct s_cheapest
+{
+	long	cur_a;
+	long	target_b;
+	int		pos_a;
+	int		pos_b;
+	int		i;
+	int		j;
+}	t_cheapest;
+
 typedef struct s_turk
 {
 	long	max;
@@ -82,19 +93,19 @@ typedef struct s_turk
 }	t_turk;
 
 // parse_args
-int	parse_args(int ac, char **av);
-int	check_is_nbr(char **av);
-int	check_nbr_duplicate(int *nbrs, int size_nbrs);
-int	*get_nbrs(char **av, int size_nbrs);
+int		parse_args(int ac, char **av);
+int		check_is_nbr(char **av);
+int		check_nbr_duplicate(int *nbrs, int size_nbrs);
+int		*get_nbrs(char **av, int size_nbrs);
 
 // utils
-int	skip_spaces(char *str, int i);
-int	count_nbrs(int ac, char **av);
+int		skip_spaces(char *str, int i);
+int		count_nbrs(int ac, char **av);
 
 // init_structs
 t_turk	*make_turk(int ac, char **av);
 t_stats	init_stats(void);
-t_moves init_moves(void);
+t_moves	init_moves(void);
 void	reset_moves(t_moves *moves);
 
 // circular_list
@@ -128,14 +139,21 @@ void	sort_three_numbers(t_turk *turk);
 void	sort_four_numbers(t_turk *turk);
 
 // sort_utils
-int	is_sort(t_turk *turk);
+int		is_sort(t_turk *turk);
 
 // turkish
 void	turkish(t_turk **turk);
 void	start_turkish(t_turk **turk);
+void	find_cheapest_to_b(t_turk **turk,t_moves *moves);
+
+// turkish_utils
+void	get_target_b(t_cheapest *vars, t_stack **stack_b, t_stats *stats);
 
 // stats
 void	get_stats(t_limits *limits, t_stack *stack);
+void	print_stats(t_turk **turk);
+void	print_stacks(t_turk **turk);
+void	print_vars(t_cheapest *vars);
 
 //end
 void	free_all(t_turk **turk);

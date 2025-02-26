@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:11:49 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/25 18:58:32 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:29:04 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	free_all(t_turk **turk)
 {
 	t_stack	*a;
 	t_stack	*temp;
-	t_stack *next;
+	t_stack	*next;
 
 	a = (*turk)->stack_a;
 	temp = a->next;
