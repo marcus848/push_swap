@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 18:03:53 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/26 15:47:26 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:11:26 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	pa(t_turk **turk)
 	moved_b->prev = last_a;
 	moved_b->next = first_a;
 	(*turk)->stack_a = moved_b;
-	ft_printf("pa\n");
+	// ft_printf("pa\n");
 }
 
 void	pb(t_turk **turk)
@@ -95,7 +95,7 @@ void	pb(t_turk **turk)
 		(*turk)->stack_b = moved_a;
 		(*turk)->stack_b->next = moved_a;
 		(*turk)->stack_b->prev = moved_a;
-		ft_printf("pb\n");
+		// ft_printf("pb\n");
 		return ;
 	}
 	last_b = (*turk)->stack_b->prev;
@@ -104,5 +104,5 @@ void	pb(t_turk **turk)
 	moved_a->next = (*turk)->stack_b;
 	(*turk)->stack_b->prev = moved_a;
 	(*turk)->stack_b = moved_a;
-	ft_printf("pb\n");
+	// ft_printf("pb\n");
 }

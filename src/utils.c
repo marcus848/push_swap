@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 22:13:24 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/06 22:15:10 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:58:04 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,20 @@ int	count_nbrs(int ac, char **av)
 		i++;
 	}
 	return (ac + count - minus - 1);
+}
+
+int	max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
+int	min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
 }

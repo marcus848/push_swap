@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:26:25 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/26 15:38:52 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:08:31 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include "../libft/include/libft.h"
 
 // enum
+enum e_rotate
+{
+	er_ra,
+	er_rb,
+	er_rr,
+	er_rrr,
+	er_random
+};
+
 enum e_moves
 {
 	e_sa,
@@ -101,6 +110,8 @@ int		*get_nbrs(char **av, int size_nbrs);
 // utils
 int		skip_spaces(char *str, int i);
 int		count_nbrs(int ac, char **av);
+int		max(int a, int b);
+int		min(int a, int b);
 
 // init_structs
 t_turk	*make_turk(int ac, char **av);
@@ -148,6 +159,9 @@ void	find_cheapest_to_b(t_turk **turk,t_moves *moves);
 
 // turkish_utils
 void	get_target_b(t_cheapest *vars, t_stack **stack_b, t_stats *stats);
+int	get_moves(t_cheapest *vars, t_turk **turk);
+int		find_best_rotate(int index, int size);
+int	define_rotate(t_cheapest *vars, t_turk **turk, int best_a, int best_b);
 
 // stats
 void	get_stats(t_limits *limits, t_stack *stack);
@@ -157,5 +171,8 @@ void	print_vars(t_cheapest *vars);
 
 //end
 void	free_all(t_turk **turk);
+
+// calculates
+void	calculate_rotate(t_cheapest *vars, t_moves *moves, int size_a, int size_b);
 
 #endif
