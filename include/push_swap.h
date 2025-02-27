@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:26:25 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/26 20:08:31 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/27 18:06:57 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_moves
 	int	total;
 }	t_moves;
 
-typedef struct s_cheapest
+typedef struct s_cheap
 {
 	long	cur_a;
 	long	target_b;
@@ -88,7 +88,9 @@ typedef struct s_cheapest
 	int		pos_b;
 	int		i;
 	int		j;
-}	t_cheapest;
+	int		moves;
+	int		rotate;
+}	t_cheap;
 
 typedef struct s_turk
 {
@@ -118,6 +120,7 @@ t_turk	*make_turk(int ac, char **av);
 t_stats	init_stats(void);
 t_moves	init_moves(void);
 void	reset_moves(t_moves *moves);
+void	reset_vars(t_cheap *vars);
 
 // circular_list
 void	add_node(t_stack **stack, long nbr);
@@ -155,24 +158,36 @@ int		is_sort(t_turk *turk);
 // turkish
 void	turkish(t_turk **turk);
 void	start_turkish(t_turk **turk);
-void	find_cheapest_to_b(t_turk **turk,t_moves *moves);
+t_cheap	find_cheap_to_b(t_turk **turk);
+void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **));
 
 // turkish_utils
-void	get_target_b(t_cheapest *vars, t_stack **stack_b, t_stats *stats);
-int	get_moves(t_cheapest *vars, t_turk **turk);
-int		find_best_rotate(int index, int size);
-int	define_rotate(t_cheapest *vars, t_turk **turk, int best_a, int best_b);
+void	get_target_b(t_cheap *vars, t_stack **stack_b, t_stats *stats);
+int	calculate_moves(t_cheap *vars, int size_a, int size_b);
+void	update_final_var(t_cheap *vars, t_cheap *final_vars);
+t_moves	get_moves(t_cheap *vars, int size_a, int size_b);
 
 // stats
 void	get_stats(t_limits *limits, t_stack *stack);
 void	print_stats(t_turk **turk);
 void	print_stacks(t_turk **turk);
-void	print_vars(t_cheapest *vars);
+void	print_vars(t_cheap *vars);
+void	print_moves(t_moves *moves);
 
 //end
 void	free_all(t_turk **turk);
 
 // calculates
-void	calculate_rotate(t_cheapest *vars, t_moves *moves, int size_a, int size_b);
+int	find_cheap_rotate(t_cheap *vars, int size_a, int size_b);
+int	calculate_rr(t_cheap *vars);
+int	calculate_rrr(t_cheap *vars, int size_a, int size_b);
+int	calculate_ra(t_cheap *vars, int size_b);
+int	calculate_rb(t_cheap *vars, int size_a);
+
+// get_moves_utils
+void	get_rotate_rr(t_cheap *vars, t_moves *moves);
+void	get_rotate_rrr(t_cheap *vars, t_moves *moves, int size_a, int size_b);
+void	get_rotate_ra(t_cheap *vars, t_moves *moves, int size_b);
+void	get_rotate_rb(t_cheap *vars, t_moves *moves, int size_a);
 
 #endif

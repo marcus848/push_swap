@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:42:33 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/26 15:05:10 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:48:58 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,36 @@ void	print_stats(t_turk **turk)
 	ft_printf("-----------\n");
 }
 
-void	print_vars(t_cheapest *vars)
+void	print_vars(t_cheap *vars)
 {
 	ft_printf("---VARS---\n");
 	ft_printf("cur_a:    %d\n", vars->cur_a);
 	ft_printf("pos_a:    %d\n", vars->pos_a);
 	ft_printf("target_a: %d\n", vars->target_b);
 	ft_printf("pos_b:    %d\n", vars->pos_b);
+	if (vars->rotate == er_rr)
+		ft_printf(GREEN "rr: %d\n" RESET, vars->moves);
+	else if (vars->rotate == er_ra)
+		ft_printf(GREEN "ra: %d\n" RESET, vars->moves);
+	else if (vars->rotate == er_rb)
+		ft_printf(GREEN "rb: %d\n" RESET, vars->moves);
+	else
+		ft_printf(GREEN "rrr: %d\n" RESET, vars->moves);
+}
+
+void	print_moves(t_moves *moves)
+{
+	if (moves->i_rr > 0)
+		ft_printf("rr: %d\n", moves->i_rr);
+	if (moves->i_ra > 0)
+		ft_printf("ra: %d\n", moves->i_ra);
+	if (moves->i_rb > 0)
+		ft_printf("rb: %d\n", moves->i_rb);
+	if (moves->i_rrr > 0)
+		ft_printf("rrr: %d\n", moves->i_rrr);
+	if (moves->i_rra > 0)
+		ft_printf("rra: %d\n", moves->i_rra);
+	if (moves->i_rrb > 0)
+		ft_printf("rrb: %d\n", moves->i_rrb);
+	ft_printf("\n");
 }

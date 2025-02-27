@@ -78,3 +78,15 @@ void	reset_moves(t_moves *moves)
 	moves->i_rrr = 0;
 	moves->total = 0;
 }
+
+void	reset_vars(t_cheap *vars)
+{
+	vars->pos_a = 0;
+	vars->pos_b = 0;
+	vars->cur_a = 0;
+	vars->target_b = 0;
+	vars->i = 0;
+	vars->j = 0;
+	vars->moves = 0;
+	vars->rotate = 0;
+}

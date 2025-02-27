@@ -12,38 +12,57 @@
 
 #include "../include/push_swap.h"
 
-void	calculate_rotate(t_cheapest *vars, t_moves *moves, int size_a, int size_b)
+int	find_cheap_rotate(t_cheap *vars, int size_a, int size_b)
 {
-	int	max_rr;
-	int	max_rrr;
-	int	random;
-	int	temp;
+	int	moves_rr;
+	int	moves_rrr;
+	int	moves_ra;
+	int	moves_rb;
 
-	moves->i_ra = vars->pos_a;
-	moves->i_rb = vars->pos_b;
-	moves->i_rra = size_a - vars->pos_a;
-	moves->i_rrb = size_b - vars->pos_b;
-	max_rr = max(moves->i_ra, moves->i_rb);	
-	max_rrr = max(moves->i_rra, moves->i_rrb);
-	random = min(moves->i_ra, moves->i_rra) + min(moves->i_rb, moves->i_rrb);
-	if (random <= max_rr & random <= max_rrr)
-	{
-		if (moves->i_ra < moves->i_rra)
-			moves->i_rra = 0;
-		else
-			moves->i_ra = 0;
-		if (moves->i_rb < moves->i_rrb)
-			moves->i_rrb = 0;
-		else
-			moves->i_rb = 0;
-	}
-	if (max_rr <= random && max_rr <= max_rrr)
-	{
-		if (moves->i_ra == moves->i_rb)
-		{
-			temp = moves->i_ra;
-			reset_moves(moves);
-			moves->i_rr = temp;
-		}
-	}
+	moves_rr = calculate_rr(vars);
+	moves_rrr = calculate_rrr(vars, size_a, size_b);
+	moves_ra = calculate_ra(vars, size_b);
+	moves_rb = calculate_rb(vars, size_a);
+	if (moves_rr <= moves_rrr && moves_rr <= moves_ra && moves_rr <= moves_rb)
+		return (er_rr);
+	if (moves_ra <= moves_rrr && moves_ra <= moves_rr && moves_ra <= moves_rb)
+		return (er_ra);
+	if (moves_rb <= moves_rrr && moves_rb <= moves_ra && moves_rb <= moves_rr)
+		return (er_rb);
+	return (er_rrr);
+}
+
+int	calculate_rr(t_cheap *vars)
+{
+	return (max(vars->pos_a, vars->pos_b));
+}
+
+int	calculate_rrr(t_cheap *vars, int size_a, int size_b)
+{
+	int	a;
+	int	b;
+
+	a = size_a - vars->pos_a;
+	b = size_b - vars->pos_b;
+	return (max(a, b));
+}
+
+int	calculate_ra(t_cheap *vars, int size_b)
+{
+	int	a;
+	int	b;
+
+	a = vars->pos_a;
+	b = size_b - vars->pos_b;
+	return (a + b);
+}
+
+int	calculate_rb(t_cheap *vars, int size_a)
+{
+	int	a;
+	int	b;
+
+	b = vars->pos_b;
+	a = size_a - vars->pos_a;
+	return (a + b);
 }
