@@ -47,6 +47,9 @@ fclean: clean
 	@rm -f $(NAME) $(LIBFT)
 	@echo "fcleaned"
 
+test: $(NAME)
+	./push_swap 34 24 76 16 74 2 29 9 19 14
+
 test2:	$(NAME)	
 	$(eval ARG = $(shell shuf -i 0-100 -n 2))
 
@@ -68,10 +71,18 @@ test4:	$(NAME)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 
+test5:	$(NAME)	
+	$(eval ARG = $(shell shuf -i 0-100 -n 5))
+
+	./push_swap $(ARG) | ./checker_linux $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
+
 test10:	$(NAME)	
 	$(eval ARG = $(shell shuf -i 0-100 -n 10))
 
-	./push_swap $(ARG)
+	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 

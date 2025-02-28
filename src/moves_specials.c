@@ -14,15 +14,15 @@
 
 void	ss(t_turk **turk)
 {
-	sa(turk, 0);
-	sb(turk, 0);
+	sa(&(*turk)->stack_a, 0);
+	sb(&(*turk)->stack_b, 0);
 	ft_printf("ss\n");
 }
 
 void	rr(t_turk **turk)
 {
 	ra(turk, 0);
-	sb(turk, 0);
+	rb(turk, 0);
 	ft_printf("rr\n");
 }
 

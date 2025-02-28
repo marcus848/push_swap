@@ -76,11 +76,20 @@ t_moves	get_moves(t_cheap *vars, int size_a, int size_b)
 	type = vars->rotate;
 	if (type == er_rr)
 		get_rotate_rr(vars, &moves);
-	if (type == er_rrr)
+	else if (type == er_rrr)
 		get_rotate_rrr(vars, &moves, size_a, size_b);
 	else if (type == er_ra)
 		get_rotate_ra(vars, &moves, size_b);
 	else if (type == er_rb)
 		get_rotate_rb(vars, &moves, size_a);
 	return (moves);
+}
+
+void	last_rotate(t_turk **turk)
+{
+	t_moves	moves;
+	
+	moves = init_moves();
+	moves.i_ra = (*turk)->stats.a.index_min;
+	execute_moves(turk, &moves, pass);
 }

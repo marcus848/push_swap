@@ -71,6 +71,23 @@ void	print_stacks(t_turk **turk)
 	}
 }
 
+void	print_stacksA(t_turk **turk)
+{
+	t_stack	*a;
+	t_stack	*ta;
+
+	a = (*turk)->stack_a;
+	ta = a->next;
+	ft_printf("--STACKS--\nA  | B\n");
+	ft_printf("%.2d |\n", a->nbr);
+	while (a != ta)
+	{
+		if (ta != a)
+			ft_printf("%.2d | \n",ta->nbr);
+		if (ta != a)
+			ta = ta->next;
+	}
+}
 void	print_stats(t_turk **turk)
 {
 	ft_printf("---STATS---\n");

@@ -18,29 +18,24 @@ void	turkish(t_turk **turk)
 	t_cheap	vars;
 
 	start_turkish(turk);
-	print_stacks(turk);
-	// while ((*turk)->stats.a.size > 3)
-	// {
+	while ((*turk)->stats.a.size > 3)
+	{
 		vars = find_cheap_to_b(turk);
 		moves = get_moves(&vars, (*turk)->stats.a.size, (*turk)->stats.b.size);
 		execute_moves(turk, &moves, pb);
-		vars = find_cheap_to_b(turk);
+	}
+	sort_three_numbers((*turk));
+	// print_stacks(turk);
+	while ((*turk)->stats.a.size < (*turk)->size)
+	{
+		vars = find_right_position_a(turk);
+		vars.rotate = er_rr;
 		moves = get_moves(&vars, (*turk)->stats.a.size, (*turk)->stats.b.size);
-		execute_moves(turk, &moves, pb);
-		vars = find_cheap_to_b(turk);
-		moves = get_moves(&vars, (*turk)->stats.a.size, (*turk)->stats.b.size);
-		execute_moves(turk, &moves, pb);
-		// vars = find_cheap_to_b(turk);
-		// moves = get_moves(&vars, (*turk)->stats.a.size, (*turk)->stats.b.size);
-		// execute_moves(turk, &moves, pb);
-		// vars = find_cheap_to_b(turk);
-		// moves = get_moves(&vars, (*turk)->stats.a.size, (*turk)->stats.b.size);
-		// execute_moves(turk, &moves, pb);
-		// vars = find_cheap_to_b(turk);
-		// moves = get_moves(&vars, (*turk)->stats.a.size, (*turk)->stats.b.size);
-		// execute_moves(turk, &moves, pb);
-	// }
 		print_stacks(turk);
+		execute_moves(turk, &moves, pa);
+	}
+	last_rotate(turk);
+	print_stacksA(turk);
 }
 
 void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **))
@@ -59,7 +54,38 @@ void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **))
 		rrb(turk, 1);
 	f(turk);
 	get_stats(&(*turk)->stats.a, (*turk)->stack_a);
-	get_stats(&(*turk)->stats.b, (*turk)->stack_b);
+	if ((*turk)->size > (*turk)->stats.a.size)
+		get_stats(&(*turk)->stats.b, (*turk)->stack_b);
+}
+
+t_cheap	find_right_position_a(t_turk **turk)
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_cheap	vars;
+
+	a = (*turk)->stack_a;
+	b = (*turk)->stack_b;
+	reset_vars(&vars);
+	vars.cur_a = a->nbr;
+	if (b->nbr > (*turk)->stats.a.max)
+	{
+		vars.cur_a = (*turk)->stats.a.min;
+		vars.pos_a = (*turk)->stats.a.index_min;
+		return (vars);
+	}
+	while (vars.i < (*turk)->stats.a.size)
+	{
+		a = a->next;
+		if ((a->nbr > b->nbr && a->nbr < vars.cur_a)
+			|| (vars.i == 0 && vars.cur_a < b->nbr))
+		{
+			vars.cur_a = a->nbr;
+			vars.pos_a = vars.i + 1;
+		}
+		vars.i++;
+	}
+	return (vars);
 }
 
 t_cheap	find_cheap_to_b(t_turk **turk)

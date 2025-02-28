@@ -145,6 +145,7 @@ void	rrb(t_turk **turk, int message);
 void	ss(t_turk **turk);
 void	rr(t_turk **turk);
 void	rrr(t_turk **turk);
+void	pass(t_turk **turk);
 
 // sort_turk
 void	sort_turk(t_turk *turk);
@@ -160,12 +161,14 @@ void	turkish(t_turk **turk);
 void	start_turkish(t_turk **turk);
 t_cheap	find_cheap_to_b(t_turk **turk);
 void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **));
+t_cheap	find_right_position_a(t_turk **turk);
 
 // turkish_utils
 void	get_target_b(t_cheap *vars, t_stack **stack_b, t_stats *stats);
 int	calculate_moves(t_cheap *vars, int size_a, int size_b);
 void	update_final_var(t_cheap *vars, t_cheap *final_vars);
 t_moves	get_moves(t_cheap *vars, int size_a, int size_b);
+void	last_rotate(t_turk **turk);
 
 // stats
 void	get_stats(t_limits *limits, t_stack *stack);
@@ -173,6 +176,7 @@ void	print_stats(t_turk **turk);
 void	print_stacks(t_turk **turk);
 void	print_vars(t_cheap *vars);
 void	print_moves(t_moves *moves);
+void	print_stacksA(t_turk **turk);
 
 //end
 void	free_all(t_turk **turk);
