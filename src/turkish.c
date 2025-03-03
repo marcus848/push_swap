@@ -18,16 +18,13 @@ void	turkish(t_turk **turk)
 	t_cheap	vars;
 
 	start_turkish(turk);
-	// print_stacks(turk);
 	while ((*turk)->stats.a.size > 3)
 	{
 		vars = find_cheap_to_b(turk);
 		moves = get_moves(&vars, (*turk)->stats.a.size, (*turk)->stats.b.size);
 		execute_moves(turk, &moves, pb);
-		// print_stacks(turk);
 	}
 	sort_three_numbers((*turk));
-	// print_stacks(turk);
 	while ((*turk)->stats.a.size < (*turk)->size)
 	{
 		vars = find_right_position_a(turk);
@@ -39,12 +36,9 @@ void	turkish(t_turk **turk)
 		else
 			vars.rotate = er_rr;
 		moves = get_moves(&vars, (*turk)->stats.a.size, (*turk)->stats.b.size);
-		// print_stacks(turk);
-		// ft_printf("target A: %d\nindex A: %d\n",vars.cur_a, vars.pos_a);
 		execute_moves(turk, &moves, pa);
 	}
 	last_rotate(turk);
-	// print_stacksA(turk);
 }
 
 void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **))

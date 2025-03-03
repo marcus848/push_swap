@@ -90,6 +90,9 @@ void	last_rotate(t_turk **turk)
 	t_moves	moves;
 	
 	moves = init_moves();
-	moves.i_ra = (*turk)->stats.a.index_min;
+	if ((*turk)->stats.a.index_min > (*turk)->stats.a.size / 2 + 1)
+		moves.i_rra = (*turk)->stats.a.size - (*turk)->stats.a.index_min;
+	else
+		moves.i_ra = (*turk)->stats.a.index_min;
 	execute_moves(turk, &moves, pass);
 }

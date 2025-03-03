@@ -107,6 +107,13 @@ test500: $(NAME)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 
+test5000: $(NAME)	
+	$(eval ARG = $(shell shuf -i 0-1000000 -n 5000))
+
+	./push_swap $(ARG) | ./checker_linux $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
 valgrind: $(NAME)
 	$(eval ARG = $(shell shuf -i 0-100 -n $(SIZE)))
 	@valgrind --leak-check=full --show-leak-kinds=all ./push_swap $(ARG)
