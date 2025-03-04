@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 18:03:53 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/26 19:11:26 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:00:23 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	sb(t_stack **b, int message)
 		ft_printf("sa\n");
 }
 
-void	pa(t_turk **turk)
+void	pa(t_turk **turk, int message)
 {
 	t_stack	*first_a;
 	t_stack	*last_a;
@@ -76,10 +76,11 @@ void	pa(t_turk **turk)
 	moved_b->prev = last_a;
 	moved_b->next = first_a;
 	(*turk)->stack_a = moved_b;
-	ft_printf("pa\n");
+	if (message)
+		ft_printf("pa\n");
 }
 
-void	pb(t_turk **turk)
+void	pb(t_turk **turk, int message)
 {
 	t_stack	*moved_a;
 	t_stack	*last_a;
@@ -104,11 +105,13 @@ void	pb(t_turk **turk)
 	moved_a->next = (*turk)->stack_b;
 	(*turk)->stack_b->prev = moved_a;
 	(*turk)->stack_b = moved_a;
-	ft_printf("pb\n");
+	if (message)
+		ft_printf("pb\n");
 }
 
-void	pass(t_turk **turk)
+void	pass(t_turk **turk, int message)
 {
 	(void) turk;
+	(void) message;
 	return ;
 }

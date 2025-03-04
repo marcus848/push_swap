@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_specials.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 11:52:13 by marcudos          #+#    #+#             */
-/*   Updated: 2025/03/03 21:54:34 by marcudos         ###   ########.fr       */
+/*   Created: 2024/10/16 17:31:11 by marcudos          #+#    #+#             */
+/*   Updated: 2024/12/17 20:36:24 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	ss(t_turk **turk, int message)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	sa(&(*turk)->stack_a, 0);
-	sb(&(*turk)->stack_b, 0);
-	if (message)
-		ft_printf("ss\n");
-}
-
-void	rr(t_turk **turk, int message)
-{
-	ra(turk, 0);
-	rb(turk, 0);
-	if (message)
-		ft_printf("rr\n");
-}
-
-void	rrr(t_turk **turk, int message)
-{
-	rra(turk, 0);
-	rrb(turk, 0);
-	if (message)
-		ft_printf("rrr\n");
+	while ((*s1 || *s2))
+	{
+		if ((unsigned char)*s1 != (unsigned char)*s2)
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

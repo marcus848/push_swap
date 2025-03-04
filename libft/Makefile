@@ -71,6 +71,7 @@ SRCS = \
 	$(STRING_DIR)/ft_strlcpy.c \
 	$(STRING_DIR)/ft_strlen.c \
 	$(STRING_DIR)/ft_strmapi.c \
+	$(STRING_DIR)/ft_strcmp.c \
 	$(STRING_DIR)/ft_strncmp.c \
 	$(STRING_DIR)/ft_strnstr.c \
 	$(STRING_DIR)/ft_strrchr.c \

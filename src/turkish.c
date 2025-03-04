@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:33:41 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/27 18:15:00 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/03/03 21:59:31 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void	turkish(t_turk **turk)
 	// print_stacksA(turk);
 }
 
-void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **))
+void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **, int))
 {
 	while (moves->i_rr--)
-		rr(turk);
+		rr(turk, 1);
 	while (moves->i_rrr--)
-		rrr(turk);
+		rrr(turk, 1);
 	while (moves->i_ra--)
 		ra(turk, 1);
 	while (moves->i_rb--)
@@ -59,7 +59,7 @@ void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **))
 		rra(turk, 1);
 	while (moves->i_rrb--)
 		rrb(turk, 1);
-	f(turk);
+	f(turk, 1);
 	get_stats(&(*turk)->stats.a, (*turk)->stack_a);
 	if ((*turk)->size > (*turk)->stats.a.size)
 		get_stats(&(*turk)->stats.b, (*turk)->stack_b);
@@ -124,8 +124,8 @@ t_cheap	find_cheap_to_b(t_turk **turk)
 
 void	start_turkish(t_turk **turk)
 {
-	pb(turk);
-	pb(turk);
+	pb(turk, 1);
+	pb(turk, 1);
 	get_stats(&(*turk)->stats.a, (*turk)->stack_a);
 	get_stats(&(*turk)->stats.b, (*turk)->stack_b);
 }

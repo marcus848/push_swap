@@ -1,19 +1,34 @@
 # File name
 NAME = push_swap
+BONUS = checker
 
 # Compiler and flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -Iinclude
+NODIR = --no-print-directory
+
+# temp
+TEMP = .messages
 
 # Directories
 SRC_DIR = src
 OBJ_DIR = obj
 LIBFT_DIR = libft
+APPS_DIR = apps
 
-SIZE = 3
 # Source and object files
-SRCS = $(wildcard $(SRC_DIR)/*.c)
+FILES = calculates.c circular_list.c end.c get_moves_utils.c init_structs.c \
+        moves_rotate.c moves_simple.c moves_specials.c parse_args.c sort.c sort_utils.c \
+        stack.c stats.c turkish.c turkish_utils.c utils.c
+SRCS = $(addprefix $(SRC_DIR)/, $(FILES))
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# App source files
+MAIN_SRC = $(APPS_DIR)/main.c
+CHECKER_SRC = $(APPS_DIR)/checker.c
+MAIN_OBJ = $(MAIN_SRC:$(APPS_DIR)/%.c=$(OBJ_DIR)/$(APPS_DIR)/%.o)
+CHECKER_OBJ = $(CHECKER_SRC:$(APPS_DIR)/%.c=$(OBJ_DIR)/$(APPS_DIR)/%.o)
+
 LIBFT = $(LIBFT_DIR)/libft.a
 
 # Text Colors
@@ -25,27 +40,50 @@ BLUE = \033[34m
 MAGENTA = \033[35m
 CYAN = \033[36m
 WHITE = \033[37m
+RESET = \033[0m
 
 # targets
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft
+bonus: $(OBJ_DIR) $(BONUS)
+
+$(NAME): $(OBJS) $(MAIN_OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MAIN_OBJ) -L$(LIBFT_DIR) -lft
+	@echo "$(GREEN)Done! $(NAME) compiled successfully.$(RESET)"
+
+$(BONUS): $(OBJS) $(CHECKER_OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(BONUS) $(OBJS) $(CHECKER_OBJ) -L$(LIBFT_DIR) -lft
+	@echo "$(GREEN)Done! $(BONUS) compiled successfully.$(RESET)"
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_DIR)
+	@echo "$(CYAN)Building libft...$(RESET)"
+	@$(MAKE) -C $(LIBFT_DIR) $(NODIR) > $(TEMP) 2>&1 || TRUE
+	@rm -f $(TEMP)
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/$(APPS_DIR)
+	@echo "$(CYAN)Building Objs...$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/$(APPS_DIR)/%.o: $(APPS_DIR)/%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJ_DIR) $(LIBFT_DIR)/obj
-	@echo "Object files removed."
+	@echo "$(RED)Cleaning up object files...$(RESET)"
+	@rm -rf $(OBJ_DIR)
+	@make clean -C $(LIBFT_DIR) $(NODIR) > $(TEMP) 2>&1 || TRUE
+	@rm -f $(TEMP)
 
 fclean: clean
-	@rm -f $(NAME) $(LIBFT)
-	@echo "fcleaned"
+	@echo "$(RED)Removing binaries...$(RESET)"
+	@rm -f $(NAME) $(BONUS)
+	@make fclean -C $(LIBFT_DIR) $(NODIR) > $(TEMP) 2>&1 || TRUE
+	@rm -f $(TEMP)
 
 test: $(NAME)
 	./push_swap 34 24 76 16 74 2 29 9 19 14
@@ -103,7 +141,7 @@ test100: $(NAME)
 test500: $(NAME)	
 	$(eval ARG = $(shell shuf -i 0-1000 -n 500))
 
-	./push_swap $(ARG) | ./checker_linux $(ARG)
+	./push_swap $(ARG) | ./checker $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 

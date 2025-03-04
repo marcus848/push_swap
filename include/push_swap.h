@@ -6,7 +6,7 @@
 /*   By: marcudos <marcudos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:26:25 by marcudos          #+#    #+#             */
-/*   Updated: 2025/02/27 18:06:57 by marcudos         ###   ########.fr       */
+/*   Updated: 2025/03/03 21:59:57 by marcudos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ void	create_stack_a_split(t_turk **turk, char *av, int i);
 // moves_simple
 void	sa(t_stack **a, int message);
 void	sb(t_stack **b, int message);
-void	pa(t_turk **turk);
-void	pb(t_turk **turk);
+void	pa(t_turk **turk, int message);
+void	pb(t_turk **turk, int message);
 
 // moves_rotate
 void	ra(t_turk **turk, int message);
@@ -142,10 +142,10 @@ void	rra(t_turk **turk, int message);
 void	rrb(t_turk **turk, int message);
 
 // moves_specials
-void	ss(t_turk **turk);
-void	rr(t_turk **turk);
-void	rrr(t_turk **turk);
-void	pass(t_turk **turk);
+void	ss(t_turk **turk, int message);
+void	rr(t_turk **turk, int message);
+void	rrr(t_turk **turk, int message);
+void	pass(t_turk **turk, int message);
 
 // sort_turk
 void	sort_turk(t_turk *turk);
@@ -160,7 +160,7 @@ int		is_sort(t_turk *turk);
 void	turkish(t_turk **turk);
 void	start_turkish(t_turk **turk);
 t_cheap	find_cheap_to_b(t_turk **turk);
-void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **));
+void	execute_moves(t_turk **turk, t_moves *moves, void (*f)(t_turk **, int));
 t_cheap	find_right_position_a(t_turk **turk);
 
 // turkish_utils
