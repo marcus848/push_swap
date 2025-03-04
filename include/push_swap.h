@@ -148,13 +148,14 @@ void	rrr(t_turk **turk, int message);
 void	pass(t_turk **turk, int message);
 
 // sort_turk
-void	sort_turk(t_turk *turk);
+void	sort(t_turk *turk);
 void	sort_two_numbers(t_turk **turk);
 void	sort_three_numbers(t_turk *turk);
 void	sort_four_numbers(t_turk *turk);
 
 // sort_utils
 int		is_sort(t_turk *turk);
+int		is_sort_advanced(t_turk *turk);
 
 // turkish
 void	turkish(t_turk **turk);

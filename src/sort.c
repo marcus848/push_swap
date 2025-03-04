@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-void	sort_turk(t_turk *turk)
+void	sort(t_turk *turk)
 {
 	get_stats(&turk->stats.a, turk->stack_a);
 	if (is_sort(turk))

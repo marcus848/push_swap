@@ -29,5 +29,5 @@ int	main(int ac, char **av)
 	if (!turk)
 		return (0);
 	create_stack_a(&turk, &av[1]);
-	sort_turk(turk);
+	sort(turk);
 }
