@@ -61,3 +61,9 @@ int	min(int a, int b)
 	else
 		return (b);
 }
+
+void	print_move(char *mv, int message)
+{
+	if (message)
+		ft_printf("%s\n", mv);
+}

@@ -96,7 +96,7 @@ void	pb(t_turk **turk, int message)
 		(*turk)->stack_b = moved_a;
 		(*turk)->stack_b->next = moved_a;
 		(*turk)->stack_b->prev = moved_a;
-		ft_printf("pb\n");
+		print_move("pb", message);
 		return ;
 	}
 	last_b = (*turk)->stack_b->prev;

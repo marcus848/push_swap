@@ -114,6 +114,7 @@ int		skip_spaces(char *str, int i);
 int		count_nbrs(int ac, char **av);
 int		max(int a, int b);
 int		min(int a, int b);
+void	print_move(char *mv, int message);
 
 // init_structs
 t_turk	*make_turk(int ac, char **av);

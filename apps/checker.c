@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 		return (0);
 	if (!parse_args(ac, &av[1]))
 	{
-		ft_printf("error\n");
+		ft_printf("Error\n");
 		return (0);
 	}
 	if (count_nbrs(ac, &av[1]) == 1)
@@ -40,7 +40,6 @@ int	main(int ac, char **av)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-	// print_stacksA(&turk);
 }
 
 void	execute_moves_checker(t_turk **turk, char *move)
