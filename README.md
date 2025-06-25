@@ -32,7 +32,7 @@ Os protótipos encontram-se em `include/push_swap.h` e as implementações estã
 
 ## Algoritmo: Método Turk
 
-A ordenação principal utiliza o **Método Turk**, uma estratégia que empurra elementos de A para B calculando o movimento mais barato em cada passo. O fluxo básico pode ser observado em `src/turkish.c`:
+A ordenação principal utiliza o [**Método Turk**](https://medium.com/@ayogun/push-swap-c1f5d2d41e97), uma estratégia que empurra elementos de A para B calculando o movimento mais barato em cada passo. O fluxo básico pode ser observado em `src/turkish.c`:
 
 ```c
 start_turkish(turk);
@@ -57,8 +57,12 @@ last_rotate(turk);
 O processo se divide em três etapas principais:
 
 1. **Preparação** - Duas chamadas a `pb` movem números para a pilha B, iniciando o algoritmo.
-2. **Distribuição** - Enquanto A possui mais de três elementos, o programa identifica o melhor candidato a ser enviado para B.
-3. **Inserção** - Após ordenar A com três elementos, cada valor de B é recolocado na posição correta de A.
+2. **Distribuição** - Enquanto A possui mais de três elementos, o programa identifica o melhor candidato a ser enviado para B. O objetivo é formar uma pilha B em ordem decrescente. Para isso, as regras são:
+   - O número deve ser colocado **acima do menor número mais próximo dele.**
+   - Se o número for o novo menor número da pilha B, ele deve ser colocado **acima do maior número.**
+4. **Inserção** - Após ordenar A com três elementos, cada valor de B é recolocado na posição correta de A. Como a pilha B está em ordem decrescente, ao retornar seus elementos para A, eles ficarão em ordem crescente. As regras para inserção em A são:
+   - O número deve ser colocado **acima do maior número mais próximo dele.**
+   - Se o número for o novo maior número da pilha A, ele deve ser colocado **acima do menor número.**
 
 Essas operações de rotação e inserção são calculadas levando em conta a posição atual dos elementos e qual combinação de `ra`, `rb`, `rr`, `rra` ou `rrb` resulta no menor número de movimentos.
 
